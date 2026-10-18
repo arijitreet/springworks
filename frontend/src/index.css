@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: theme("colors.paper");
+  color: theme("colors.ink");
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv05" 1;
+}
+
+/* Tabular, aligned figures everywhere numbers are compared. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* The water fill rises once on load; held still for reduced-motion users. */
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(var(--rise-to));
+  }
+}
+
+.tank-fill {
+  animation: rise 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tank-fill {
+    animation: none;
+    transform: translateY(var(--rise-to));
+  }
+}
+
+/* Gentle surface ripple on the waterline. */
+@keyframes sway {
+  0%,
+  100% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+}
+.wave {
+  animation: sway 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    animation: none;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Tally Clone (Java + Node)",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installMaven": true
+    }
+  },
+  "forwardPorts": [8080, 5173],
+  "portsAttributes": {
+    "8080": { "label": "Spring Boot API" },
+    "5173": { "label": "React (Vite)" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+  "postCreateCommand": "cd frontend && npm install"
+}
